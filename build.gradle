@@ -1,16 +1,49 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+    }
+}
 plugins {
     id 'java'
+    id 'idea'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+    //id "org.liquibase.gradle" version "2.0.1"
 }
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 group 'com.epam.dela'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.9
+
+ext{
+    lombokVersion = '1.18.4'
+    postgresqlVersion = '42.2.5'
+    liquibaseVersion = '3.6.2'
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation "org.postgresql:postgresql:$postgresqlVersion"
+    implementation "org.liquibase:liquibase-core:$liquibaseVersion"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+lombok {
+    version = "$lombokVersion"
+    sha256 = ""
 }
