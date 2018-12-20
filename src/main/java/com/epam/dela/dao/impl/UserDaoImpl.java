@@ -13,8 +13,8 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @PersistenceContext
     private EntityManager entityManager;
+
 
     /**
      * {@inheritDoc}
@@ -35,5 +35,10 @@ public class UserDaoImpl implements UserDao {
     public User create(User user) {
         entityManager.persist(user);
         return user;
+    }
+
+    @PersistenceContext
+    public void setEntityManager(EntityManager entityManager){
+        this.entityManager = entityManager;
     }
 }
