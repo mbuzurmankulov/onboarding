@@ -1,5 +1,11 @@
-jdbc:
-  driverClassName: ${JDBC_DRIVER_CLASS_NAME:org.postgresql.Driver}
-  url: ${JDBC_URL:jdbc:postgresql://localhost:5432/test}
-  username: ${JDBC_USER_NAME:postgres}
-  password: ${JDBC_PASSWORD:postgres}
+spring:
+  datasource:
+    url: ${JDBC_URL:jdbc:postgresql://localhost:5432/test}
+    username: ${JDBC_USER_NAME:postgres}
+    password: ${JDBC_PASSWORD:postgres}
+    driver-class-name: ${JDBC_DRIVER_CLASS_NAME:org.postgresql.Driver}
+
+  liquibase:
+    #enables: true
+    #change-log: classpath:db/db.changelogssss/db.db.changelogssss-master.yaml
+    #change-log: classpath:migrations/db.changelogssss.xml
