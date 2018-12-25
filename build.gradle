@@ -31,6 +31,7 @@ ext{
     liquibaseVersion = '3.6.2'
     groovyVersion = '2.5.4'
     spockVersion='1.2-groovy-2.4'
+    testcontainerVersion='1.10.3'
 }
 
 repositories {
@@ -46,6 +47,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation "org.codehaus.groovy:groovy-all:$groovyVersion"
     testImplementation "org.spockframework:spock-core:$spockVersion"
+    testImplementation "org.testcontainers:testcontainers:$testcontainerVersion"
+    testImplementation "org.testcontainers:postgresql:$testcontainerVersion"
 }
 
 lombok {
